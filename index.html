@@ -11,13 +11,38 @@
 <body>
     <div class="top-bar">
         <a href="#">
-            <h6 class="logo">Library</h6>
+            <h1 class="logo">Library</h1>
         </a>
         <div class="control">
-            <button>+ New</button>
+            <button>+ New Book</button>
         </div>
     </div>
-    <div class="main-content"></div>
+    <div class="main-content">
+        <div class="modal">
+            <h2>New Book</h2>
+            <form action="" method="get">
+                <div class="form-wrapper">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author">
+                    </div>
+                    <div class="form-group">
+                        <label for="Date">Date</label>
+                        <input type="date" id="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="read">I've read this</label>
+                        <input type="checkbox" id="read">
+                    </div>
+                </div>
+                <button type="submit">Create Book</button>
+            </form>
+        </div>
+    </div>
     <footer></footer>
 </body>
 </html>

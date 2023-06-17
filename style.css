@@ -10,6 +10,8 @@
 }
 
 body {
+    font-family: sans-serif;
+    color: #505050;
     height: 100vh;
     margin: 0rem;
     display: flex;
@@ -61,11 +63,49 @@ body {
 }
 
 .main-content {
-    background-color: hsl(var(--main-bg-color-h), var(--main-bg-color-s), calc(var(--main-bg-color-l)*0.9));
+    flex: 1;
+    background-color: hsl(var(--main-bg-color-h), calc(var(--main-bg-color-s)*0.2), calc(var(--main-bg-color-l)*3.2));
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 6rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    background-color: #fcfcfc;
+}
+
+.modal h2 {
+    margin-bottom: 4rem;
+}
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.modal .form-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
 footer {
     height: 4rem;
-    background-color: hsl(var(--main-bg-color-h), var(--main-bg-color-s), calc(var(--main-bg-color-l)*0.4));
+    background-color: hsl(var(--main-bg-color-h), var(--main-bg-color-s), calc(var(--main-bg-color-l)*0.8));
 
 }
