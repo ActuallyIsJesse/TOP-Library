@@ -1,0 +1,16 @@
+root {
+    --main-bg-color: hsl(212, 44%, 30%);
+    --accent-color: #hsl(36, 50%, 45%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    color: white;
+    background-color: ;
+    display: flex;
+    align-items: center;
+}
