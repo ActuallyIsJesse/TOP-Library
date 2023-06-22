@@ -2,6 +2,8 @@ const library = [];
 const newBook = document.querySelector(".new-book-button");
 const libraryContent = document.querySelector(".library-content");
 const modal = document.querySelector(".modal");
+const modalClose = document.querySelector(".modal-close-button");
+
 
 class Book {
     constructor(title, author, year, haveRead) {
@@ -38,5 +40,9 @@ function modalToggle() {
 }
 
 newBook.addEventListener('click', () => {
+    modalToggle()
+})
+
+modalClose.addEventListener('click', () => {
     modalToggle()
 })

@@ -82,8 +82,16 @@ body {
     background-color: #fcfcfc;
 }
 
+.modal-close-button {
+    font-size: 2rem;
+    position: absolute;
+    top: .05em;
+    right: .3em;
+    cursor: pointer;
+}
+
 .modal h2 {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 .form-wrapper {
     display: flex;
@@ -94,7 +102,7 @@ body {
 .modal .form-group {
     display: flex;
     gap: .5rem;
-    justify-content: center;
+    justify-content: start;
 }
 
 .modal form {
