@@ -17,6 +17,11 @@ class Book {
     }
 }
 
+function addBook() {
+    const bookData = new FormData(createBookForm);
+    console.log(bookData.entries);
+}
+
 function updateLibrary() {
     while(library.firstChild){
         library.removeChild(library.firstChild);
@@ -54,6 +59,6 @@ modalClose.addEventListener('click', () => {
 
 createBookButton.addEventListener('click', (event) => {
     event.preventDefault();
-    console.log("Your book has been added!");
+    addBook()
     modalToggle();
 })
