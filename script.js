@@ -17,9 +17,9 @@ class Book {
     }
 }
 
-function addBook() {
-    const bookData = new FormData(createBookForm);
-    console.log(bookData.entries);
+function addBook(form) {
+    const bookData = new FormData(form);
+    return Object.fromEntries(bookData);
 }
 
 function updateLibrary() {
@@ -45,6 +45,8 @@ function modalToggle() {
     } else {
         modal.style.setProperty('display', 'none');
     }
+    modal.reset()
+
 }
 
 
@@ -57,8 +59,9 @@ modalClose.addEventListener('click', () => {
     modalToggle();
 })
 
-createBookButton.addEventListener('click', (event) => {
+createBookForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    addBook()
+    addBook(event.target)
+    event.target.reset()
     modalToggle();
 })
