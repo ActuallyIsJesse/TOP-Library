@@ -76,6 +76,7 @@ body {
 }
 
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +108,7 @@ body {
     background-color: #fcfcfc;
 }
 
-.modal-close-button {
+.modal-close-button, .book-delete {
     font-size: 2rem;
     position: absolute;
     top: .05em;

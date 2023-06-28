@@ -5,7 +5,7 @@ const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close-button");
 const createBookForm = document.querySelector(".create-book-form");
 
-/*const tempBook1 = {
+const tempBook1 = {
   title: "The Hobbit",
   author: "Tolkien",
   year: "1937",
@@ -13,7 +13,7 @@ const createBookForm = document.querySelector(".create-book-form");
 };
 
 drawBook(tempBook1);
-*/
+
 
 class Book {
   constructor(title, author, year, haveRead) {
@@ -46,9 +46,14 @@ function updateLibrary() {
 }
 
 function drawBook(book) {
+  console.log(book);
   const wrapper = document.createElement("div");
-  wrapper.dataset.index = 1;
+  wrapper.dataset.index = "1";
   wrapper.classList.add("card");
+  const close = document.createElement("a");
+  wrapper.append(close);
+  close.innerText = '×';
+  close.classList.add("book-delete")
   const title = document.createElement("h1");
   title.innerText = `${book.title}`;
   wrapper.append(title);
