@@ -4,6 +4,7 @@ const libraryContent = document.querySelector(".library-content");
 const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close-button");
 const createBookForm = document.querySelector(".create-book-form");
+const modalBackground = document.querySelector(".modal-background");
 
 class Book {
   constructor(title, author, year, pages, haveRead) {
@@ -95,8 +96,12 @@ function addDisplayOnlyAttribute() {
 function modalToggle() {
   if (window.getComputedStyle(modal).getPropertyValue("display") === "none") {
     modal.style.setProperty("display", "flex");
+    modal.style.setProperty("opacity", "100")
+    modalBackground.style.setProperty("opacity", "100")
   } else {
-    modal.style.setProperty("display", "none");
+    modalBackground.style.setProperty("opacity", "0")
+    modal.style.setProperty("opacity", "0")
+    setTimeout(modal.style.setProperty("display", "none"), 200);
   }
   createBookForm.reset();
 }
