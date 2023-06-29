@@ -5,16 +5,6 @@ const modal = document.querySelector(".modal");
 const modalClose = document.querySelector(".modal-close-button");
 const createBookForm = document.querySelector(".create-book-form");
 
-const tempBook1 = {
-  title: "The Hobbit",
-  author: "Tolkien",
-  year: "1937",
-  haveRead: true,
-};
-
-drawBook(tempBook1);
-
-
 class Book {
   constructor(title, author, year, haveRead) {
     this.title = title;
@@ -32,28 +22,31 @@ function addBook(form) {
   } else {
     newBook.haveRead = false;
   }
-  library.unshift(newBook);
-  drawBook(library[0]);
+  library.push(newBook);
+  updateLibrary();
 }
 
 function updateLibrary() {
-  while (library.firstChild) {
-    library.removeChild(library.firstChild);
+  while (libraryContent.firstChild) {
+    libraryContent.removeChild(libraryContent.firstChild);
   }
   for (i = 0; i < library.length; i++) {
-    drawBook(library[i]);
+    drawBook(library[i], i);
   }
+  addDeleteEventListener()
 }
 
-function drawBook(book) {
-  console.log(book);
+function drawBook(book, pos) {
+  //This little monster assembles a card in the DOM based on the book that's passed to it
   const wrapper = document.createElement("div");
-  wrapper.dataset.index = "1";
+  wrapper.dataset.index = `${pos}`;
   wrapper.classList.add("card");
   const close = document.createElement("a");
   wrapper.append(close);
-  close.innerText = '×';
-  close.classList.add("book-delete")
+  close.innerText = "×";
+  close.dataset.index = `${pos}`;
+  close.dataset.nonsense = `junk!`;
+  close.classList.add("book-delete");
   const title = document.createElement("h1");
   title.innerText = `${book.title}`;
   wrapper.append(title);
@@ -70,9 +63,19 @@ function drawBook(book) {
   } else {
     haveRead.checked = false;
   }
-  haveRead.classList.add("read-checkmark")
+  haveRead.classList.add("read-checkmark");
   wrapper.append(haveRead);
   libraryContent.append(wrapper);
+}
+
+function addDeleteEventListener() {
+  const bookDeleteButtons = document.querySelectorAll(".book-delete")
+  for (const button of bookDeleteButtons) {
+    button.addEventListener("click", (event) => {
+      library.splice(event.target.dataset.index, 1)
+      updateLibrary();
+    });
+  }
 }
 
 function modalToggle() {
