@@ -36,13 +36,12 @@ function updateLibrary() {
     drawBook(library[i], i);
   }
   addDeleteEventListener();
-  addDisplayOnlyAttribute();
+  updateReadStatus();
 }
 
 function drawBook(book, pos) {
   //This little monster assembles a card in the DOM based on the book that's passed to it
   const wrapper = document.createElement("div");
-  wrapper.dataset.index = `${pos}`;
   wrapper.classList.add("card");
   const close = document.createElement("a");
   wrapper.append(close);
@@ -63,7 +62,8 @@ function drawBook(book, pos) {
   pages.innerText = `Pages: ${book.pages}`;
   wrapper.append(pages);
   const haveRead = document.createElement("input");
-  haveRead.classList.add("display-only");
+  haveRead.dataset.index = `${pos}`;
+  haveRead.classList.add("read-status");
   haveRead.type = "checkbox";
   if (book.haveRead) {
     haveRead.checked = true;
@@ -84,11 +84,17 @@ function addDeleteEventListener() {
     });
   }
 }
-function addDisplayOnlyAttribute() {
-  const displayOnlyElements = document.querySelectorAll(".display-only");
+function updateReadStatus() {
+  const displayOnlyElements = document.querySelectorAll(".read-status");
   for (const element of displayOnlyElements) {
-    element.addEventListener("click", (event) => {
-      event.preventDefault();
+    element.addEventListener("change", (event) => {
+      const index = event.target.dataset.index;
+      console.log(event);
+      if (event.target.checked) {
+        library[index].haveRead = true;
+      } else {
+        library[index].haveRead = false;
+      }
     });
   }
 }
