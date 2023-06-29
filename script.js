@@ -33,7 +33,8 @@ function updateLibrary() {
   for (i = 0; i < library.length; i++) {
     drawBook(library[i], i);
   }
-  addDeleteEventListener()
+  addDeleteEventListener();
+  addDisplayOnlyAttribute();
 }
 
 function drawBook(book, pos) {
@@ -57,6 +58,7 @@ function drawBook(book, pos) {
   year.innerText = `${book.year}`;
   wrapper.append(year);
   const haveRead = document.createElement("input");
+  haveRead.classList.add("display-only");
   haveRead.type = "checkbox";
   if (book.haveRead) {
     haveRead.checked = true;
@@ -69,11 +71,19 @@ function drawBook(book, pos) {
 }
 
 function addDeleteEventListener() {
-  const bookDeleteButtons = document.querySelectorAll(".book-delete")
+  const bookDeleteButtons = document.querySelectorAll(".book-delete");
   for (const button of bookDeleteButtons) {
     button.addEventListener("click", (event) => {
-      library.splice(event.target.dataset.index, 1)
+      library.splice(event.target.dataset.index, 1);
       updateLibrary();
+    });
+  }
+}
+function addDisplayOnlyAttribute() {
+  const displayOnlyElements = document.querySelectorAll(".display-only");
+  for (const element of displayOnlyElements) {
+    element.addEventListener("click", (event) => {
+      event.preventDefault();
     });
   }
 }
