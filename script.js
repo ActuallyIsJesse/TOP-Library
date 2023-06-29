@@ -61,7 +61,13 @@ function drawBook(book, pos) {
   const pages = document.createElement("p");
   pages.innerText = `Pages: ${book.pages}`;
   wrapper.append(pages);
+  const checkboxWrapper = document.createElement("div");
+  const checkboxLabel = document.createElement("label")
+  checkboxLabel.innerText = "I've read this: "
+  checkboxLabel.setAttribute("for", `LibraryHaveRead${pos}`);
+  checkboxWrapper.appendChild(checkboxLabel);
   const haveRead = document.createElement("input");
+  haveRead.setAttribute("id", `LibraryHaveRead${pos}`)
   haveRead.dataset.index = `${pos}`;
   haveRead.classList.add("read-status");
   haveRead.type = "checkbox";
@@ -71,7 +77,8 @@ function drawBook(book, pos) {
     haveRead.checked = false;
   }
   haveRead.classList.add("read-checkmark");
-  wrapper.append(haveRead);
+  checkboxWrapper.append(haveRead);
+  wrapper.append(checkboxWrapper);
   libraryContent.append(wrapper);
 }
 
