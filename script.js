@@ -6,10 +6,11 @@ const modalClose = document.querySelector(".modal-close-button");
 const createBookForm = document.querySelector(".create-book-form");
 
 class Book {
-  constructor(title, author, year, haveRead) {
+  constructor(title, author, year, pages, haveRead) {
     this.title = title;
     this.author = author;
     this.year = year;
+    this.pages = pages;
     this.haveRead = haveRead;
   }
 }
@@ -52,11 +53,14 @@ function drawBook(book, pos) {
   title.innerText = `${book.title}`;
   wrapper.append(title);
   const author = document.createElement("p");
-  author.innerText = `${book.author}`;
+  author.innerText = `Author: ${book.author}`;
   wrapper.append(author);
   const year = document.createElement("p");
-  year.innerText = `${book.year}`;
+  year.innerText = `Year Published: ${book.year}`;
   wrapper.append(year);
+  const pages = document.createElement("p");
+  pages.innerText = `Pages: ${book.pages}`;
+  wrapper.append(pages);
   const haveRead = document.createElement("input");
   haveRead.classList.add("display-only");
   haveRead.type = "checkbox";
